@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>მათემატიკის ტესტები - ნიკა ნანავა</title>
     <link rel="stylesheet" href="style.css">
-    <title>მათემატიკის ტესტები</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Noto+Sans+Georgian:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
-        <h1>მათემატიკის ლაბორატორია</h1>
-        <div class="author"> დამზადებულია <span> ნიკა ნანავას </span> მიერ </div>
+        <div class="logo-area">
+            <h1>MATH LAB</h1>
+            <div class="hieroglyph-text">
+                დამზადებულია: <span class="neon-name">ნიკა ნანავა</span>
+            </div>
+        </div>
     </header>
 
-    <div id="quiz-container">
-        <h3>მე-6 კლასი: ტესტი #1</h3>
-        <p>რას უდრის 15-ის 20%?</p>
-        <button onclick="checkAnswer(3)">3</button>
-        <button onclick="checkAnswer(5)">5</button>
-    </div>
+    <main>
+        <section id="welcome-screen">
+            <h2>აირჩიე კლასი:</h2>
+            <div class="class-buttons">
+                <button onclick="startQuiz(6)">მე-6 კლასი</button>
+                <button onclick="startQuiz(7)">მე-7 კლასი</button>
+                <button onclick="startQuiz(8)">მე-8 კლასი</button>
+                <button onclick="startQuiz(9)">მე-9 კლასი</button>
+            </div>
+        </section>
 
-    <div id="certificate" style="display:none;">
-        <h2>გილოცავთ!</h2>
-        <p id="cert-text"></p>
-        <div class="watermark">NIKA NANAVA</div>
-    </div>
+        <section id="quiz-container">
+            </section>
+
+        <section id="certificate" style="display: none;">
+            <div id="cert-text"></div>
+            <button onclick="location.reload()" class="retry-btn">თავიდან დაწყება</button>
+        </section>
+    </main>
+
+    <div class="bg-animation"></div>
 
     <script src="script.js"></script>
 </body>
