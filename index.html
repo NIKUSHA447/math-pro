@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>მათემატიკის ტესტები</title>
+</head>
+<body>
+    <header>
+        <h1>მათემატიკის ლაბორატორია</h1>
+        <div class="author"> დამზადებულია <span> ნიკა ნანავას </span> მიერ </div>
+    </header>
+
+    <div id="quiz-container">
+        <h3>მე-6 კლასი: ტესტი #1</h3>
+        <p>რას უდრის 15-ის 20%?</p>
+        <button onclick="checkAnswer(3)">3</button>
+        <button onclick="checkAnswer(5)">5</button>
+    </div>
+
+    <div id="certificate" style="display:none;">
+        <h2>გილოცავთ!</h2>
+        <p id="cert-text"></p>
+        <div class="watermark">NIKA NANAVA</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
