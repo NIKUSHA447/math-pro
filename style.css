@@ -4,6 +4,7 @@
     --gold: #ffd700;
     --silver: #c0c0c0;
     --bronze: #cd7f32;
+    --fail: #ff4444;
     --dark-bg: #0a0a0c;
     --glass: rgba(255, 255, 255, 0.05);
 }
@@ -21,13 +22,13 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 95%;
     max-width: 750px;
     background: var(--glass);
     padding: 30px;
     border-radius: 25px;
     border: 1px solid rgba(0, 255, 204, 0.2);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(15px);
     text-align: center;
 }
@@ -37,7 +38,7 @@ body {
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* სათაურები */
+/* სათაურები და ეფექტები */
 h1.glitch {
     font-family: 'Orbitron', sans-serif;
     font-size: 3rem;
@@ -49,7 +50,7 @@ h1.glitch {
 .neon {
     color: var(--neon);
     text-shadow: 0 0 10px var(--neon);
-    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
 }
 
 /* ინპუტები და ღილაკები */
@@ -67,8 +68,6 @@ input {
     transition: 0.3s;
 }
 
-input:focus { box-shadow: 0 0 15px var(--neon); }
-
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -85,25 +84,42 @@ button {
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 button:hover {
     background: var(--neon);
     color: black;
     box-shadow: 0 0 20px var(--neon);
-    transform: translateY(-3px);
 }
 
-.main-btn {
-    width: 100%;
-    margin-top: 20px;
-    font-size: 1.2rem;
+/* სწორი და არასწორი პასუხის გაფერადება */
+.correct { 
+    background-color: #28a745 !important; 
+    color: white !important; 
+    border-color: #28a745 !important;
+    box-shadow: 0 0 20px #28a745; 
+}
+.wrong { 
+    background-color: #dc3545 !important; 
+    color: white !important; 
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 20px #dc3545; 
+}
+
+/* ამოცანის ქულა */
+.points-tag {
+    background: var(--neon);
+    color: black;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
 /* მოსამზადებელი მასალის ბლოკი */
 .study-box {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     border: 1px solid var(--neon);
     padding: 20px;
     height: 300px;
@@ -114,32 +130,13 @@ button:hover {
     line-height: 1.6;
 }
 
-.study-box h3 { color: var(--neon); margin-top: 15px; border-bottom: 1px dashed var(--neon); }
-.study-box ul { padding-left: 20px; }
-
-.download-btn {
-    background: #ffc107 !important;
-    color: #000 !important;
-    border: none !important;
-    margin: 15px 0;
-    width: 100%;
-}
-
-/* ტესტის ელემენტები */
-.quiz-info {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    color: var(--neon);
-    margin-bottom: 10px;
-}
-
+/* პროგრესის ბარი */
 .progress-bar {
     width: 100%;
     height: 8px;
     background: #222;
     border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 #progress-fill {
@@ -151,65 +148,68 @@ button:hover {
     box-shadow: 0 0 10px var(--neon);
 }
 
-/* დიპლომების სტილები */
+/* --- დიპლომების სტილი --- */
 .diploma {
-    background: #000;
+    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
     padding: 40px;
-    border: 10px double #444;
-    border-radius: 10px;
+    border: 15px double #444;
+    border-radius: 20px;
     position: relative;
     margin-top: 20px;
+    animation: glowPulse 2s infinite alternate;
 }
+
+@keyframes glowPulse { from { box-shadow: 0 0 20px rgba(255,255,255,0.05); } to { box-shadow: 0 0 40px rgba(255,255,255,0.1); } }
 
 .cert-name {
     font-family: 'Orbitron', sans-serif;
     font-size: 2.2rem;
     margin: 20px 0;
     color: #fff;
-    text-decoration: underline;
+    letter-spacing: 3px;
 }
 
-.score-final {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+/* ოქროს დიპლომი */
+.gold-border { 
+    border-color: var(--gold); 
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+    background: url('https://www.transparenttextures.com/patterns/gold-dust.png'), radial-gradient(circle, #2c2400 0%, #000 100%);
+}
+.gold-border::before { content: "🔱 👑 🔱"; position: absolute; top: 10px; width: 100%; left: 0; color: var(--gold); font-size: 1.5rem; }
+
+/* ვერცხლის დიპლომი */
+.silver-border { 
+    border-color: var(--silver); 
+    box-shadow: 0 0 40px rgba(192, 192, 192, 0.4);
+    background: radial-gradient(circle, #222 0%, #000 100%);
+}
+.silver-border::before { content: "⚔️ 🛡️ ⚔️"; position: absolute; top: 10px; width: 100%; left: 0; color: var(--silver); font-size: 1.5rem; }
+
+/* ბრინჯაოს დიპლომი */
+.bronze-border { 
+    border-color: var(--bronze); 
+    box-shadow: 0 0 30px rgba(205, 127, 50, 0.3);
 }
 
-/* დიპლომის ჩარჩოების ფერები */
-.gold-border { border-color: var(--gold); box-shadow: 0 0 30px var(--gold); }
-.silver-border { border-color: var(--silver); box-shadow: 0 0 30px var(--silver); }
-.bronze-border { border-color: var(--bronze); box-shadow: 0 0 30px var(--bronze); }
-
-.gold-border h1 { color: var(--gold); }
-.silver-border h1 { color: var(--silver); }
-.bronze-border h1 { color: var(--bronze); }
+/* წაგების ბლოკი */
+.fail-box {
+    border: 5px solid var(--fail);
+    background: rgba(255, 68, 68, 0.05);
+    padding: 40px;
+    border-radius: 20px;
+}
 
 /* ფუტერი */
-footer {
-    position: fixed;
-    bottom: 15px;
-    width: 100%;
-    text-align: center;
-}
-
-.author-footer {
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    opacity: 0.5;
-}
-
-.hieroglyph {
-    font-family: 'Orbitron';
-    color: var(--neon);
-    font-weight: 900;
-}
-
 .author-tag {
     margin-top: 25px;
     font-size: 0.8rem;
     color: var(--neon);
     font-weight: bold;
+    letter-spacing: 2px;
 }
 
-/* სკროლიბარის სტილი */
+.hieroglyph { font-family: 'Orbitron'; color: var(--neon); font-weight: 900; }
+
+/* სკროლიბარი */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-thumb { background: var(--neon); border-radius: 10px; }
