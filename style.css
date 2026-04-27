@@ -38,7 +38,7 @@ body {
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* სათაურები და ეფექტები */
+/* სათაურები */
 h1.glitch {
     font-family: 'Orbitron', sans-serif;
     font-size: 3rem;
@@ -47,13 +47,15 @@ h1.glitch {
     margin-bottom: 20px;
 }
 
-.neon {
-    color: var(--neon);
-    text-shadow: 0 0 10px var(--neon);
-    font-family: 'Orbitron', sans-serif;
+/* შესვლის ფორმა - აქ იყო პრობლემა */
+.login-form {
+    display: flex;
+    flex-direction: column; /* ერთმანეთის ქვეშ დალაგება */
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-/* ინპუტები და ღილაკები */
 input {
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid var(--neon);
@@ -63,28 +65,25 @@ input {
     width: 80%;
     max-width: 300px;
     font-size: 1.1rem;
-    margin-bottom: 20px;
     outline: none;
     transition: 0.3s;
+    text-align: center;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 20px;
-}
+input:focus { box-shadow: 0 0 15px var(--neon); }
 
+/* ღილაკები */
 button {
     background: transparent;
     border: 1px solid var(--neon);
     color: var(--neon);
-    padding: 15px 20px;
+    padding: 15px 30px;
     border-radius: 12px;
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
     transition: 0.2s;
+    min-width: 150px;
 }
 
 button:hover {
@@ -93,31 +92,41 @@ button:hover {
     box-shadow: 0 0 20px var(--neon);
 }
 
-/* სწორი და არასწორი პასუხის გაფერადება */
-.correct { 
-    background-color: #28a745 !important; 
-    color: white !important; 
-    border-color: #28a745 !important;
-    box-shadow: 0 0 20px #28a745; 
-}
-.wrong { 
-    background-color: #dc3545 !important; 
-    color: white !important; 
-    border-color: #dc3545 !important;
-    box-shadow: 0 0 20px #dc3545; 
+.main-btn {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
 }
 
-/* ამოცანის ქულა */
-.points-tag {
-    background: var(--neon);
-    color: black;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
+/* პასუხების გაფერადება */
+.correct { background-color: #28a745 !important; color: white !important; box-shadow: 0 0 20px #28a745; border: none; }
+.wrong { background-color: #dc3545 !important; color: white !important; box-shadow: 0 0 20px #dc3545; border: none; }
+
+/* დიპლომების სტილი - Rare & Luxury */
+.diploma {
+    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+    padding: 40px;
+    border: 15px double #444;
+    border-radius: 20px;
+    position: relative;
+    margin-top: 20px;
 }
 
-/* მოსამზადებელი მასალის ბლოკი */
+.gold-border { 
+    border-color: var(--gold); 
+    box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
+    background: url('https://www.transparenttextures.com/patterns/gold-dust.png'), radial-gradient(circle, #2c1e00 0%, #000 100%);
+}
+.gold-border::before { content: "🔱 👑 🔱"; position: absolute; top: 10px; width: 100%; left: 0; color: var(--gold); font-size: 1.5rem; }
+
+.silver-border { 
+    border-color: var(--silver); 
+    box-shadow: 0 0 40px rgba(192, 192, 192, 0.3);
+}
+.silver-border::before { content: "⚔️ 🛡️ ⚔️"; position: absolute; top: 10px; width: 100%; left: 0; color: var(--silver); font-size: 1.5rem; }
+
+.fail-box { border: 5px solid var(--fail); background: rgba(255, 68, 68, 0.05); }
+
+/* სხვა ელემენტები */
 .study-box {
     background: rgba(0, 0, 0, 0.5);
     border: 1px solid var(--neon);
@@ -127,89 +136,13 @@ button:hover {
     text-align: left;
     margin: 20px 0;
     border-radius: 15px;
-    line-height: 1.6;
 }
 
-/* პროგრესის ბარი */
-.progress-bar {
-    width: 100%;
-    height: 8px;
-    background: #222;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-#progress-fill {
-    width: 0%;
-    height: 100%;
+.points-tag {
     background: var(--neon);
-    border-radius: 10px;
-    transition: 0.4s;
-    box-shadow: 0 0 10px var(--neon);
-}
-
-/* --- დიპლომების სტილი --- */
-.diploma {
-    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
-    padding: 40px;
-    border: 15px double #444;
-    border-radius: 20px;
-    position: relative;
-    margin-top: 20px;
-    animation: glowPulse 2s infinite alternate;
-}
-
-@keyframes glowPulse { from { box-shadow: 0 0 20px rgba(255,255,255,0.05); } to { box-shadow: 0 0 40px rgba(255,255,255,0.1); } }
-
-.cert-name {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.2rem;
-    margin: 20px 0;
-    color: #fff;
-    letter-spacing: 3px;
-}
-
-/* ოქროს დიპლომი */
-.gold-border { 
-    border-color: var(--gold); 
-    box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
-    background: url('https://www.transparenttextures.com/patterns/gold-dust.png'), radial-gradient(circle, #2c2400 0%, #000 100%);
-}
-.gold-border::before { content: "🔱 👑 🔱"; position: absolute; top: 10px; width: 100%; left: 0; color: var(--gold); font-size: 1.5rem; }
-
-/* ვერცხლის დიპლომი */
-.silver-border { 
-    border-color: var(--silver); 
-    box-shadow: 0 0 40px rgba(192, 192, 192, 0.4);
-    background: radial-gradient(circle, #222 0%, #000 100%);
-}
-.silver-border::before { content: "⚔️ 🛡️ ⚔️"; position: absolute; top: 10px; width: 100%; left: 0; color: var(--silver); font-size: 1.5rem; }
-
-/* ბრინჯაოს დიპლომი */
-.bronze-border { 
-    border-color: var(--bronze); 
-    box-shadow: 0 0 30px rgba(205, 127, 50, 0.3);
-}
-
-/* წაგების ბლოკი */
-.fail-box {
-    border: 5px solid var(--fail);
-    background: rgba(255, 68, 68, 0.05);
-    padding: 40px;
-    border-radius: 20px;
-}
-
-/* ფუტერი */
-.author-tag {
-    margin-top: 25px;
+    color: black;
+    padding: 2px 8px;
+    border-radius: 4px;
     font-size: 0.8rem;
-    color: var(--neon);
     font-weight: bold;
-    letter-spacing: 2px;
 }
-
-.hieroglyph { font-family: 'Orbitron'; color: var(--neon); font-weight: 900; }
-
-/* სკროლიბარი */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-thumb { background: var(--neon); border-radius: 10px; }
