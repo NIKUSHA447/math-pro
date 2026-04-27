@@ -3,42 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>მათემატიკის ტესტები - ნიკა ნანავა</title>
+    <title>Math Quest - Nika Nanava</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Noto+Sans+Georgian:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <div class="logo-area">
-            <h1>MATH LAB</h1>
-            <div class="hieroglyph-text">
-                დამზადებულია: <span class="neon-name">ნიკა ნანავა</span>
+    <div class="container">
+        <section id="login-screen" class="screen active">
+            <h1 class="glitch">MATH QUEST</h1>
+            <p class="subtitle">მზად ხარ გამოწვევისთვის?</p>
+            <input type="text" id="user-name" placeholder="შეიყვანე სახელი და გვარი...">
+            <button onclick="goToClasses()" class="main-btn">შესვლა</button>
+        </section>
+
+        <section id="class-screen" class="screen">
+            <h2 class="neon-title">აირჩიე საფეხური</h2>
+            <div class="grid">
+                <button onclick="startLevel(6)">მე-6 კლასი</button>
+                <button onclick="startLevel(7)">მე-7 კლასი</button>
+                <button onclick="startLevel(8)">მე-8 კლასი</button>
+                <button onclick="startLevel(9)">მე-9 კლასი</button>
             </div>
+        </section>
+
+        <section id="quiz-screen" class="screen">
+            <div class="quiz-info">
+                <div id="round-info">რაუნდი: 1/5</div>
+                <div id="score-info">ქულა: 0</div>
+            </div>
+            <div class="progress-bar"><div id="progress-fill"></div></div>
+            
+            <div id="question-box">
+                <h3 id="question-text">იტვირთება...</h3>
+                <div id="options-grid" class="grid">
+                    </div>
+            </div>
+        </section>
+
+        <section id="finish-screen" class="screen">
+            <div class="certificate">
+                <h1 class="cert-title">CERTIFICATE</h1>
+                <p>წარმატებით დასრულდა მათემატიკის კურსი</p>
+                <h2 id="final-user-name" class="neon"></h2>
+                <div id="final-stats"></div>
+                <div class="stamp">დამზადებულია: ნიკა ნანავა</div>
+            </div>
+            <button onclick="location.reload()" class="main-btn">თავიდან დაწყება</button>
+        </section>
+    </div>
+
+    <footer>
+        <div class="author-tag">
+            DESIGNED BY <span class="hieroglyph">NIKA NANAVA</span>
         </div>
-    </header>
-
-    <main>
-        <section id="welcome-screen">
-            <h2>აირჩიე კლასი:</h2>
-            <div class="class-buttons">
-                <button onclick="startQuiz(6)">მე-6 კლასი</button>
-                <button onclick="startQuiz(7)">მე-7 კლასი</button>
-                <button onclick="startQuiz(8)">მე-8 კლასი</button>
-                <button onclick="startQuiz(9)">მე-9 კლასი</button>
-            </div>
-        </section>
-
-        <section id="quiz-container">
-            </section>
-
-        <section id="certificate" style="display: none;">
-            <div id="cert-text"></div>
-            <button onclick="location.reload()" class="retry-btn">თავიდან დაწყება</button>
-        </section>
-    </main>
-
-    <div class="bg-animation"></div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
