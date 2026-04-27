@@ -2,63 +2,42 @@
 <html lang="ka">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Quest - Nika Nanava</title>
+    <title>Math Quiz - Nika Nanava</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Noto+Sans+Georgian:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <div class="container">
         <section id="login-screen" class="screen active">
-            <h1 class="glitch">MATH QUEST</h1>
-            <p class="subtitle">მზად ხარ გამოწვევისთვის?</p>
-            <input type="text" id="user-name" placeholder="შეიყვანე სახელი და გვარი...">
-            <button onclick="goToClasses()" class="main-btn">შესვლა</button>
+            <h1>MATH QUEST</h1>
+            <input type="text" id="user-name" placeholder="სახელი გვარი">
+            <button onclick="goToClasses()">დაწყება</button>
         </section>
 
         <section id="class-screen" class="screen">
-            <h2 class="neon-title">აირჩიე საფეხური</h2>
-            <div class="grid">
-                <button onclick="startLevel(6)">მე-6 კლასი</button>
-                <button onclick="startLevel(7)">მე-7 კლასი</button>
-                <button onclick="startLevel(8)">მე-8 კლასი</button>
-                <button onclick="startLevel(9)">მე-9 კლასი</button>
-            </div>
+            <h2>აირჩიე კლასი</h2>
+            <button onclick="startLevel(6)">მე-6 კლასი</button>
+            <button onclick="startLevel(7)">მე-7 კლასი</button>
+            <button onclick="startLevel(8)">მე-8 კლასი</button>
+            <button onclick="startLevel(9)">მე-9 კლასი</button>
         </section>
 
         <section id="quiz-screen" class="screen">
-            <div class="quiz-info">
-                <div id="round-info">რაუნდი: 1/5</div>
-                <div id="score-info">ქულა: 0</div>
-            </div>
-            <div class="progress-bar"><div id="progress-fill"></div></div>
-            
-            <div id="question-box">
-                <h3 id="question-text">იტვირთება...</h3>
-                <div id="options-grid" class="grid">
-                    </div>
-            </div>
+            <div id="round-info"></div>
+            <h3 id="question-text"></h3>
+            <div id="options-grid"></div>
         </section>
 
         <section id="finish-screen" class="screen">
-            <div class="certificate">
-                <h1 class="cert-title">CERTIFICATE</h1>
-                <p>წარმატებით დასრულდა მათემატიკის კურსი</p>
-                <h2 id="final-user-name" class="neon"></h2>
-                <div id="final-stats"></div>
-                <div class="stamp">დამზადებულია: ნიკა ნანავა</div>
+            <div id="cert-box" class="diploma">
+                <h1 id="cert-type"></h1>
+                <p>გადაეცემა</p>
+                <h2 id="final-name" class="cert-name"></h2>
+                <div id="final-score"></div>
+                <div class="author-footer">დამზადებულია: ნიკა ნანავა</div>
             </div>
-            <button onclick="location.reload()" class="main-btn">თავიდან დაწყება</button>
+            <button onclick="location.reload()">თავიდან</button>
         </section>
     </div>
-
-    <footer>
-        <div class="author-tag">
-            DESIGNED BY <span class="hieroglyph">NIKA NANAVA</span>
-        </div>
-    </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
