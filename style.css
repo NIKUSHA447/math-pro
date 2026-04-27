@@ -1,21 +1,110 @@
-body { background: #1a1a1a; color: white; font-family: sans-serif; text-align: center; }
-
-/* შენი სახელის სტილი - "იეროგლიფების" ეფექტით */
-.author span {
-    font-weight: bold;
-    color: #00ffcc;
-    text-shadow: 2px 2px 10px #00ffcc;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+:root {
+    --neon: #00ffcc;
+    --dark-bg: #0a0a0c;
+    --glass: rgba(255, 255, 255, 0.05);
 }
 
-/* ღილაკების ანიმაცია */
+body {
+    background-color: var(--dark-bg);
+    color: white;
+    font-family: 'Noto Sans Georgian', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background: var(--glass);
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.screen { display: none; animation: slideUp 0.5s ease forwards; }
+.screen.active { display: block; }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+h1.glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    color: var(--neon);
+    text-shadow: 3px 3px 0px #ff0055;
+    margin-bottom: 10px;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--neon);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    width: 300px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
 button {
-    padding: 10px 20px;
-    margin: 10px;
+    background: var(--glass);
+    border: 1px solid var(--neon);
+    color: var(--neon);
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
-    border-radius: 5px;
 }
 
-button:hover { transform: scale(1.1); background: #00ffcc; }
+button:hover {
+    background: var(--neon);
+    color: black;
+    box-shadow: 0 0 20px var(--neon);
+    transform: scale(1.05);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #222;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+#progress-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--neon);
+    transition: 0.3s;
+}
+
+/* სერთიფიკატის დიზაინი */
+.certificate {
+    background: white;
+    color: black;
+    padding: 40px;
+    border: 15px double var(--neon);
+    position: relative;
+}
+
+.hieroglyph {
+    font-family: 'Orbitron';
+    color: var(--neon);
+    text-shadow: 0 0 5px var(--neon);
+    font-weight: 900;
+}
+
+footer { position: fixed; bottom: 20px; width: 100%; text-align: center; font-size: 0.8rem; letter-spacing: 2px; opacity: 0.6; }
